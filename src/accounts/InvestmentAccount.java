@@ -1,25 +1,8 @@
 package accounts;
 
-public class InvestmentAccount implements Account {
+public class InvestmentAccount extends AbstractAccount {
 
-    private double balance;
-
-    public InvestmentAccount(double balance) {
-        this.balance = balance;
-    }
-
-    @Override
-    public double getBalance() {
-        return balance;
-    }
-
-    @Override
-    public void deposit(double amount) {
-        balance += amount;
-    }
-
-    @Override
-    public void withdraw(double amount) {
-        balance -= amount;
+    public InvestmentAccount(String id, double balance) {
+        super(id, balance);
     }
 }

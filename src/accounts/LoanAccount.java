@@ -1,25 +1,18 @@
 package accounts;
 
-public class LoanAccount implements Account {
+public class LoanAccount extends AbstractAccount {
 
-    private double loanAmount;
-
-    public LoanAccount(double loanAmount) {
-        this.loanAmount = loanAmount;
-    }
-
-    @Override
-    public double getBalance() {
-        return -loanAmount;
+    public LoanAccount(String id, double loanAmount) {
+        super(id, -loanAmount);
     }
 
     @Override
     public void deposit(double amount) {
-        loanAmount -= amount; // تسديد
+        state.deposit(this, amount); // يسدّد القرض
     }
 
     @Override
     public void withdraw(double amount) {
-        loanAmount += amount; // قرض جديد
+        state.withdraw(this, amount); // قرض جديد
     }
 }
