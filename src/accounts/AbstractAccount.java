@@ -12,6 +12,15 @@ public abstract class AbstractAccount implements Account {
         this.state = new ActivState(); // default
     }
 
+
+
+    public void addBalance(double amount) {
+        balance += amount;
+    }
+
+    public void reduceBalance(double amount) {
+        balance -= amount;
+    }
     @Override
     public String getAccountId() {
         return accountId;
@@ -31,15 +40,6 @@ public abstract class AbstractAccount implements Account {
     public void withdraw(double amount) {
         state.withdraw(this, amount);
     }
-
-    public void addBalance(double amount) {
-        balance += amount;
-    }
-
-    public void reduceBalance(double amount) {
-        balance -= amount;
-    }
-
     @Override
     public void setState(AccountState state) {
         this.state = state;

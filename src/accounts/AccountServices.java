@@ -9,6 +9,8 @@ public class AccountServices {
 
     public Account createAccount(Account account) {
         accounts.put(account.getAccountId(), account);
+        System.out.println("account");
+        System.out.println(account);
         return account;
     }
 
