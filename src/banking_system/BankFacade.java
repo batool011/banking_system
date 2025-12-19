@@ -1,9 +1,13 @@
 package banking_system;
 
-import accounts.*;
 import interest.*;
 import notifications.*;
 import transactions.*;
+import transactions.approval.ApprovalHandler;
+import transactions.approval.AutoApprovalHandler;
+import transactions.approval.ManagerApprovalHandler;
+import transactions.processor.TransactionProcessor;
+import transactions.processor.TransactionProcessorFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +31,13 @@ public class BankFacade {
         ApprovalHandler manager = new ManagerApprovalHandler();
         auto.setNext(manager);
 
-        auto.approve(transaction);
+        boolean approved = auto.approve(transaction);
+        if(!approved) {
+            notifyObservers("Transaction failed !!! ");
+        }
+
+        TransactionProcessor processor = TransactionProcessorFactory.getProcessor(transaction.getType());
+        processor.execute(transaction);
 
         notifyObservers("Transaction processed: " + transaction.amount);
     }

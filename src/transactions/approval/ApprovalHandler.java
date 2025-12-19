@@ -1,4 +1,6 @@
-package transactions;
+package transactions.approval;
+
+import transactions.Transaction;
 
 public abstract class ApprovalHandler {
 
@@ -8,5 +10,5 @@ public abstract class ApprovalHandler {
         this.next = next;
     }
 
-    public abstract void approve(Transaction transaction);
+    public abstract boolean approve(Transaction transaction);
 }
