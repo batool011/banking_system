@@ -4,12 +4,18 @@ import accounts.Account;
 
 public class Transaction {
     public double amount;
-    private String id;
     private Account fromAccount;
     private Account toAccount;
     private TransactionType type;
     public Transaction(double amount) {
         this.amount = amount;
+    }
+
+    public Transaction(double amount, Account fromAccount,Account toAccount,TransactionType type) {
+        this.amount=amount;
+        this.fromAccount=fromAccount;
+        this.toAccount=toAccount;
+        this.type=type;
     }
 
     public Account getToAccount() {

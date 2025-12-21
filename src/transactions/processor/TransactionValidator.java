@@ -1,7 +1,6 @@
-package transactions.validation;
+package transactions.processor;
 
 import transactions.Transaction;
-import transactions.TransactionType;
 
 public class TransactionValidator {
 

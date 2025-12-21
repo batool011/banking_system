@@ -2,6 +2,6 @@ package transactions.processor;
 
 import transactions.Transaction;
 
-public interface TransactionProcessor {
+public interface TransactionProcessorj {
     void execute(Transaction transaction);
 }
