@@ -1,5 +1,7 @@
 package accounts;
 
+import interest.InterestPolicy;
+
 public abstract class AbstractAccount implements Account {
 
     protected String accountId;
@@ -11,6 +13,8 @@ public abstract class AbstractAccount implements Account {
         this.balance = balance;
         this.state = new ActivState(); // default
     }
+    protected InterestPolicy interestPolicy;
+
 
 
 
@@ -49,4 +53,11 @@ public abstract class AbstractAccount implements Account {
     public AccountState getState() {
         return state;
     }
+
+    public void applyInterest() {
+        if (interestPolicy != null) {
+            interestPolicy.apply(this);
+        }
+    }
 }
+

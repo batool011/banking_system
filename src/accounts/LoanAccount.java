@@ -2,17 +2,17 @@ package accounts;
 
 public class LoanAccount extends AbstractAccount {
 
-    public LoanAccount(String id, double loanAmount) {
-        super(id, -loanAmount);
+    private double interestRate;
+
+    public LoanAccount(String accountId,
+                       double loanAmount,
+                       double interestRate) {
+        super(accountId, -loanAmount); // دين
+        this.interestRate = interestRate;
     }
 
-    @Override
-    public void deposit(double amount) {
-        state.deposit(this, amount); // يسدّد القرض
-    }
-
-    @Override
-    public void withdraw(double amount) {
-        state.withdraw(this, amount); // قرض جديد
+    public void applyInterest() {
+        double interest = Math.abs(balance) * interestRate;
+        reduceBalance(interest); // يزيد الدين
     }
 }
