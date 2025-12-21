@@ -1,4 +1,4 @@
-package accounts.interest;
+package interest;
 
 import accounts.AbstractAccount;
 import interest.InterestPolicy;

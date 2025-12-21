@@ -12,6 +12,6 @@ public class BaseReport implements Report {
 
     @Override
     public void generate() {
-        System.out.println("=== BANK REPORT ===\n");
+       System.out.println("=== BANK REPORT ===\n");
     }
 }

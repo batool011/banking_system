@@ -1,4 +1,4 @@
-package support;
+package notifications.support;
 
 public enum TicketStatus {
     OPEN,

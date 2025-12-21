@@ -1,4 +1,4 @@
-package recommendations;
+package notifications.recommendations;
 
 import transactions.Transaction;
 import java.util.List;

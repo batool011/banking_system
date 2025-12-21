@@ -1,6 +1,7 @@
 package reports;
 
 import core.BankSystem;
+import transactions.Transaction;
 
 public class DailyTransactionReport implements Report {
 
@@ -12,8 +13,9 @@ public class DailyTransactionReport implements Report {
 
     @Override
     public void generate() {
-        System.out.println("Daily Transactions:");
-        bankSystem.getTransactions()
-                .forEach(t -> System.out.println(t.getType() + " - " + t.getAmount()));
+        System.out.println("=== Daily Transactions Report ===");
+        for (Transaction t : bankSystem.getTransactions()) {
+            System.out.println(t.getType() + " : " + t.getAmount());
+        }
     }
 }

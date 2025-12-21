@@ -9,6 +9,6 @@ public class CustumerAccess implements AccessStrategy {
 
     @Override
     public boolean canViewReports() {
-        return true;
+        return false;
     }
 }

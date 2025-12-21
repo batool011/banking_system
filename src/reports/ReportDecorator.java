@@ -1,5 +1,6 @@
 package reports;
 
+
 public abstract class ReportDecorator implements Report {
 
     protected Report wrappedReport;

@@ -1,7 +1,6 @@
 package reports;
 
 import core.BankSystem;
-import transactions.Transaction;
 
 public class AuditLogReport implements Report {
 
@@ -13,13 +12,8 @@ public class AuditLogReport implements Report {
 
     @Override
     public void generate() {
-        System.out.println("=== AUDIT LOG REPORT ===");
-
-        for (Transaction t : bankSystem.getTransactions()) {
-            System.out.println(
-                    "Transaction: " + t.getType() +
-                            " | Amount: " + t.getAmount()
-            );
-        }
+        System.out.println("=== Audit Log Report ===");
+        System.out.println("Total transactions: " +
+                bankSystem.getTransactions().size());
     }
 }

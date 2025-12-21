@@ -1,6 +1,5 @@
-package banking_system;
-
 import accounts.*;
+import admin.BankFacade;
 import core.BankSystem;
 import notifications.*;
 import transactions.processor.TransactionProcessorFactory;
@@ -43,18 +42,37 @@ public class Main {
             System.out.print("Initial Balance: ");
             double balance = scanner.nextDouble();
 
-            System.out.println("1 - Saving | 2 - Checking");
-            int type = scanner.nextInt();
+            System.out.println("""
+        Choose Account Type:
+        1 - Saving
+        2 - Checking
+        3 - Loan
+        4 - Investment
+        """);
+
+            int typeInput = scanner.nextInt();
             scanner.nextLine();
 
-            Account acc =
-                    (type == 1)
-                            ? new SavingAccount(id, balance)
-                            : new CheckingAccount(id, balance);
+            AccountType type;
+
+            switch (typeInput) {
+                case 1 -> type = AccountType.SAVING;
+                case 2 -> type = AccountType.CHECKING;
+                case 3 -> type = AccountType.LOAN;
+                case 4 -> type = AccountType.INVESTMENT;
+                default -> throw new IllegalArgumentException("Invalid account type");
+            }
+
+            Account acc = AccountFactory.create(
+                    type,
+                    id,
+                    balance
+            );
 
             bankSystem.addAccount(acc);
-            System.out.println("✅ Account created");
+            System.out.println("✅ Account created successfully");
         }
+
 
         // =====================
         // LOGIN
@@ -127,6 +145,25 @@ public class Main {
             System.out.println("\nADMIN DASHBOARD");
             System.out.println("Active Accounts: " + facade.getActiveAccounts());
             System.out.println("Total Transactions: " + facade.getTransactionsCount());
+            System.out.println("ADMIN REPORTS");
+            System.out.println("1 - Daily Transactions");
+            System.out.println("2 - Account Summary");
+            System.out.println("3 - Audit Logs");
+
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    facade.showDailyTransactionsReport();
+                    break;
+                case 2:
+                    facade.showAccountSummaryReport();
+                    break;
+                case 3:
+                    facade.showAuditLogReport();
+                    break;
+            }
+
         }
 
         System.out.println("\n=== SYSTEM END ===");
@@ -138,4 +175,6 @@ public class Main {
         scanner.nextLine();
         return amount;
     }
+
+
 }

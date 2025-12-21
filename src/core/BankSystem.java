@@ -1,6 +1,7 @@
-
+package core;
 
 import accounts.Account;
+import accounts.ActivState;
 import transactions.Transaction;
 
 import java.util.ArrayList;
@@ -26,4 +27,23 @@ public class BankSystem {
     public List<Transaction> getTransactions() {
         return transactions;
     }
+    public Account getAccountById(String accountId) {
+        for (Account acc : accounts) {
+            if (acc.getAccountId().equals(accountId)) {
+                return acc;
+            }
+        }
+        return null;
+    }
+    public int getActiveAccountsCount() {
+        int count = 0;
+        for (Account acc : accounts) {
+            if (acc.getState() instanceof ActivState) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+
 }

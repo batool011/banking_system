@@ -1,4 +1,4 @@
-package banking_system;
+package admin;
 
 import accounts.*;
 import core.BankSystem;
@@ -21,27 +21,7 @@ public class BankFacade {
         this.notificationService = notificationService;
     }
 
-    // =====================
-    // ACCOUNT CREATION
-    // =====================
-    public void createAccount(String id, double balance, int type) {
 
-        Account acc;
-
-        switch (type) {
-            case 1:
-                acc = new SavingAccount(id, balance);
-                break;
-            case 2:
-                acc = new CheckingAccount(id, balance);
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid account type");
-        }
-
-        bankSystem.addAccount(acc);
-        System.out.println("✅ Account created successfully");
-    }
 
     // =====================
     // USER OPERATIONS
